@@ -13,9 +13,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "puppeteer": "^24.11.2"
+    "puppeteer": "^21.11.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ramvikash/instagram_scraper.git"
