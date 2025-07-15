@@ -18,8 +18,12 @@ app.post('/api/scrape', async (req, res) => {
   let browser;
   try {
     browser = await puppeteer.launch({
-      headless: false,// <--- for debugging, set to true for deployment
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--window-size=1920,1080'],
+      headless: true,// <--- for debugging, set to true for deployment
+      args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox'
+      //'--window-size=1920,1080'
+      ],
     });
 
     const page = await browser.newPage();
