@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 
-app.post('/api/scrape', async (req, res) => {
+app.get('/api/scrape', async (req, res) => {
   const { url } = req.body;
 
   if (!url) {
