@@ -2,9 +2,11 @@
   "name": "instagram_scrapper",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.mjs",
+  "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.mjs",
+    "postinstall": "npx playwright install"
   },
   "keywords": [],
   "author": "",
