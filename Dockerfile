@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # Optional: expose a port (only if you run a web server)
-# EXPOSE 3000
+EXPOSE 3000
 
 # Set command to run your app
 CMD ["node", "index.mjs"]
