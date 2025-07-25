@@ -28,6 +28,7 @@ app.post('/scrape', async (req, res) => {
     // }
     //new edited line starts
     let videoUrl = null;
+    await page.waitForTimeout(3000);
 
     try {
     await page.waitForSelector('video', { timeout: 10000 });
