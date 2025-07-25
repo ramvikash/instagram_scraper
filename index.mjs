@@ -1,6 +1,3 @@
-// const express = require('express');
-// const { chromium } = require('playwright');
-// const cors = require('cors');
 import express from 'express';
 import { chromium } from 'playwright';
 import cors from 'cors';
@@ -20,16 +17,30 @@ app.post('/scrape', async (req, res) => {
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
     console.log('Page loaded'); // Add this
 
-    await page.waitForTimeout(3000);
+    // await page.waitForTimeout(3000);
 
-    const videoElement = await page.$('video');
+    // const videoElement = await page.$('video');
+    // let videoUrl = null;
+
+    // if (videoElement) {
+    //   videoUrl = await videoElement.getAttribute('src');
+    //   console.log('Video URL:', videoUrl);
+    // }
+    //new edited line starts
     let videoUrl = null;
 
+    try {
+    await page.waitForSelector('video', { timeout: 10000 });
+    const videoElement = await page.$('video');
     if (videoElement) {
-      videoUrl = await videoElement.getAttribute('src');
-      console.log('Video URL:', videoUrl);
-    }
+    videoUrl = await videoElement.getAttribute('src');
+    console.log('Video URL:', videoUrl);
+            }
+    } catch (e) {
+      console.warn('Video element not found within timeout');
+      }
 
+    //new edited line ends
     const thumbnail = await page.$eval('meta[property="og:image"]', el => el.content);
     console.log('Thumbnail URL:', thumbnail);
 
