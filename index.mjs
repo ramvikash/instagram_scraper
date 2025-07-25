@@ -17,29 +17,29 @@ app.post('/scrape', async (req, res) => {
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
     console.log('Page loaded'); // Add this
 
-    // await page.waitForTimeout(3000);
-
-    // const videoElement = await page.$('video');
-    // let videoUrl = null;
-
-    // if (videoElement) {
-    //   videoUrl = await videoElement.getAttribute('src');
-    //   console.log('Video URL:', videoUrl);
-    // }
-    //new edited line starts
-    let videoUrl = null;
     await page.waitForTimeout(3000);
 
-    try {
-    await page.waitForSelector('video', { timeout: 10000 });
     const videoElement = await page.$('video');
+    let videoUrl = null;
+
     if (videoElement) {
-    videoUrl = await videoElement.getAttribute('src');
-    console.log('Video URL:', videoUrl);
-            }
-    } catch (e) {
-      console.warn('Video element not found within timeout');
-      }
+      videoUrl = await videoElement.getAttribute('src');
+      console.log('Video URL:', videoUrl);
+    }
+    //new edited line starts
+    // let videoUrl = null;
+    // await page.waitForTimeout(3000);
+
+    // try {
+    // await page.waitForSelector('video', { timeout: 10000 });
+    // const videoElement = await page.$('video');
+    // if (videoElement) {
+    // videoUrl = await videoElement.getAttribute('src');
+    // console.log('Video URL:', videoUrl);
+    //         }
+    // } catch (e) {
+    //   console.warn('Video element not found within timeout');
+    //   }
 
     //new edited line ends
     const thumbnail = await page.$eval('meta[property="og:image"]', el => el.content);
