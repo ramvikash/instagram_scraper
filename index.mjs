@@ -26,22 +26,7 @@ app.post('/scrape', async (req, res) => {
       videoUrl = await videoElement.getAttribute('src');
       console.log('Video URL:', videoUrl);
     }
-    //new edited line starts
-    // let videoUrl = null;
-    // await page.waitForTimeout(3000);
 
-    // try {
-    // await page.waitForSelector('video', { timeout: 10000 });
-    // const videoElement = await page.$('video');
-    // if (videoElement) {
-    // videoUrl = await videoElement.getAttribute('src');
-    // console.log('Video URL:', videoUrl);
-    //         }
-    // } catch (e) {
-    //   console.warn('Video element not found within timeout');
-    //   }
-
-    //new edited line ends
     const thumbnail = await page.$eval('meta[property="og:image"]', el => el.content);
     console.log('Thumbnail URL:', thumbnail);
 
@@ -59,4 +44,4 @@ app.post('/scrape', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(Server running on port ${PORT}));
